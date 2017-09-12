@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26216.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VirtuaNES", "VirtuaNES.vcxproj", "{E951712F-2A13-4CB6-A19D-7DAFEBABCC8C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Profile|x86 = Profile|x86
+		Release_Debugout|x86 = Release_Debugout|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E951712F-2A13-4CB6-A19D-7DAFEBABCC8C}.Debug|x86.ActiveCfg = Debug|Win32
+		{E951712F-2A13-4CB6-A19D-7DAFEBABCC8C}.Debug|x86.Build.0 = Debug|Win32
+		{E951712F-2A13-4CB6-A19D-7DAFEBABCC8C}.Profile|x86.ActiveCfg = Profile|Win32
+		{E951712F-2A13-4CB6-A19D-7DAFEBABCC8C}.Profile|x86.Build.0 = Profile|Win32
+		{E951712F-2A13-4CB6-A19D-7DAFEBABCC8C}.Release_Debugout|x86.ActiveCfg = Release_Debugout|Win32
+		{E951712F-2A13-4CB6-A19D-7DAFEBABCC8C}.Release_Debugout|x86.Build.0 = Release_Debugout|Win32
+		{E951712F-2A13-4CB6-A19D-7DAFEBABCC8C}.Release|x86.ActiveCfg = Release|Win32
+		{E951712F-2A13-4CB6-A19D-7DAFEBABCC8C}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6B982DC-40CB-4E4D-99C5-CB83BA90D8EF}
+	EndGlobalSection
+EndGlobal
