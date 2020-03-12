@@ -1,26 +1,26 @@
 # Microsoft Developer Studio Project File - Name="VirtuaNES" - Package Owner=<4>
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
-# ** 編集しないでください **
+# ** DO NOT EDIT **
 
 # TARGTYPE "Win32 (x86) Application" 0x0101
 
 CFG=VirtuaNES - Win32 Debug
-!MESSAGE これは有効なﾒｲｸﾌｧｲﾙではありません。 このﾌﾟﾛｼﾞｪｸﾄをﾋﾞﾙﾄﾞするためには NMAKE を使用してください。
-!MESSAGE [ﾒｲｸﾌｧｲﾙのｴｸｽﾎﾟｰﾄ] ｺﾏﾝﾄﾞを使用して実行してください
+!MESSAGE This is not a valid makefile. To build this project using NMAKE,
+!MESSAGE use the Export Makefile command and run
 !MESSAGE 
 !MESSAGE NMAKE /f "VirtuaNES.mak".
 !MESSAGE 
-!MESSAGE NMAKE の実行時に構成を指定できます
-!MESSAGE ｺﾏﾝﾄﾞ ﾗｲﾝ上でﾏｸﾛの設定を定義します。例:
+!MESSAGE You can specify a configuration when running NMAKE
+!MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE 
 !MESSAGE NMAKE /f "VirtuaNES.mak" CFG="VirtuaNES - Win32 Debug"
 !MESSAGE 
-!MESSAGE 選択可能なﾋﾞﾙﾄﾞ ﾓｰﾄﾞ:
+!MESSAGE Possible choices for configuration are:
 !MESSAGE 
-!MESSAGE "VirtuaNES - Win32 Release" ("Win32 (x86) Application" 用)
-!MESSAGE "VirtuaNES - Win32 Debug" ("Win32 (x86) Application" 用)
-!MESSAGE "VirtuaNES - Win32 Profile" ("Win32 (x86) Application" 用)
-!MESSAGE "VirtuaNES - Win32 Release_Debugout" ("Win32 (x86) Application" 用)
+!MESSAGE "VirtuaNES - Win32 Release" (based on "Win32 (x86) Application")
+!MESSAGE "VirtuaNES - Win32 Debug" (based on "Win32 (x86) Application")
+!MESSAGE "VirtuaNES - Win32 Profile" (based on "Win32 (x86) Application")
+!MESSAGE "VirtuaNES - Win32 Release_Debugout" (based on "Win32 (x86) Application")
 !MESSAGE 
 
 # Begin Project
@@ -45,7 +45,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /MT /W3 /GX /O2 /I "Zlib" /I "." /I "NES" /I "NES\Mapper" /I "NES\ApuEx" /I "NES\ApuEx\emu2413" /I "NES\PadEx" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
+# ADD CPP /nologo /MT /W3 /GX /O2 /I "..\DXF\include" /I "Zlib" /I "." /I "NES" /I "NES\Mapper" /I "NES\ApuEx" /I "NES\ApuEx\emu2413" /I "NES\PadEx" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "BBKE" /YX /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x411 /d "NDEBUG"
@@ -72,7 +72,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /MT /W3 /Gm /GX /ZI /Od /I "." /I "NES" /I "NES\Mapper" /I "NES\ApuEx" /I "NES\ApuEx\emu2413" /I "NES\PadEx" /I "Zlib" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
+# ADD CPP /nologo /MT /W3 /GX /Z7 /Od /I "..\DXF\include" /I "." /I "NES" /I "NES\Mapper" /I "NES\ApuEx" /I "NES\ApuEx\emu2413" /I "NES\PadEx" /I "Zlib" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "BBKE" /YX /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x411 /d "_DEBUG"
@@ -82,7 +82,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib winmm.lib comctl32.lib imm32.lib dinput.lib shlwapi.lib libcmtd.lib /nologo /subsystem:windows /map /debug /machine:I386 /pdbtype:sept
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib winmm.lib comctl32.lib imm32.lib dinput.lib shlwapi.lib libcmtd.lib /nologo /subsystem:windows /pdb:none /map /debug /machine:I386
 # SUBTRACT LINK32 /nodefaultlib
 
 !ELSEIF  "$(CFG)" == "VirtuaNES - Win32 Profile"
@@ -5074,6 +5074,29 @@ SOURCE=.\NES\Mapper\Mapper255.cpp
 
 SOURCE=.\NES\Mapper\Mapper255.h
 # PROP Exclude_From_Build 1
+# End Source File
+# Begin Source File
+
+SOURCE=.\NES\Mapper\MapperBBK.cpp
+
+!IF  "$(CFG)" == "VirtuaNES - Win32 Release"
+
+# PROP Exclude_From_Build 1
+
+!ELSEIF  "$(CFG)" == "VirtuaNES - Win32 Debug"
+
+# PROP Exclude_From_Build 1
+
+!ELSEIF  "$(CFG)" == "VirtuaNES - Win32 Profile"
+
+!ELSEIF  "$(CFG)" == "VirtuaNES - Win32 Release_Debugout"
+
+!ENDIF 
+
+# End Source File
+# Begin Source File
+
+SOURCE=.\NES\Mapper\MapperBBK.h
 # End Source File
 # Begin Source File
 

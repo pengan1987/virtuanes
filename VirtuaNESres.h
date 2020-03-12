@@ -8,7 +8,11 @@
 
 // VirtuaNES window class
 #define	VIRTUANES_WNDCLASS		"VirtuaNESwndclass"
+#ifdef BBKE
+#define	VIRTUANES_CAPTION		"VirtuaNES for BBK by fanoble@yeah.net"
+#else
 #define	VIRTUANES_CAPTION		"VirtuaNES"
+#endif
 #define	VIRTUANES_MUTEX			"VirtuaNESmutex"
 
 // VirtuaNES Website

@@ -35,6 +35,9 @@ public:
 
 	// $8000-$FFFF Memory read(Dummy)
 	virtual	void	Read( WORD addr, BYTE data ) {}
+#ifdef BBKE
+	virtual	BOOL	ReadHigh( WORD addr, LPBYTE pdata ) { return FALSE; }
+#endif
 
 	// $4100-$7FFF Lower Memory read/write
 	virtual	BYTE	ReadLow ( WORD addr );

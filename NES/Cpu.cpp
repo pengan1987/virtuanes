@@ -632,8 +632,14 @@ inline	BYTE	CPU::RD6502( WORD addr )
 	// Others
 		return	nes->Read( addr );
 	} else {
+#ifdef BBKE
+		BYTE data;
+		if (mapper->ReadHigh(addr, &data))
+			return data;
+#else
 	// Dummy access
 		mapper->Read( addr, CPU_MEM_BANK[addr>>13][addr&0x1FFF] );
+#endif
 	}
 
 	// Quick bank read
@@ -751,6 +757,8 @@ void	CPU::ClrIRQ( BYTE mask )
 	R.INT_pending &= ~mask;
 }
 
+INT DBG_BP_PC = 0x53E;
+
 //
 // ñΩóﬂé¿çs
 //
@@ -792,6 +800,12 @@ register BYTE	DT;
 				DMA_cycles = 0;
 			}
 		}
+
+		if (DBG_BP_PC == R.PC)
+			R.PC = R.PC;
+
+		if (R.PC < 0x600)
+			R.PC = R.PC;
 
 		nmi_request = irq_request = 0;
 		opcode = OP6502( R.PC++ );
@@ -1829,4 +1843,3 @@ _execute_exit:
 
 	return	TOTAL_cycles - OLD_cycles;
 }
-

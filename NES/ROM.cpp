@@ -40,6 +40,9 @@ FILE	*fp = NULL;
 LPBYTE	temp = NULL;
 LPBYTE	bios = NULL;
 LONG	FileSize;
+#ifdef BBKE
+BOOL	bBBKF = FALSE;
+#endif
 
 	ZEROMEMORY( &header, sizeof(header) );
 	ZEROMEMORY( path, sizeof(path) );
@@ -102,6 +105,12 @@ LONG	FileSize;
 			&& header.ID[2] == 'S' && header.ID[3] == 'M') {
 			// ヘッダコピー
 			memcpy( &header, temp, sizeof(NESHEADER) );
+#ifdef BBKE
+		// check bbk header: BBKE
+		} else if( header.ID[0] == 'B' && header.ID[1] == 'B'
+			&& header.ID[2] == 'K' && header.ID[3] == 'E') {
+			bBBKF = TRUE;
+#endif
 		} else {
 			FREE( temp );
 
@@ -302,6 +311,47 @@ DEBUGOUT( "PRGSIZE:%d\n", PRGsize );
 
 			NSF_PAGE_SIZE = PRGsize>>12;
 DEBUGOUT( "PAGESIZE:%d\n", NSF_PAGE_SIZE );
+#ifdef BBKE
+		} else if( header.ID[0] == 'B' && header.ID[1] == 'B'
+			&& header.ID[2] == 'K' && header.ID[3] == 'E') {
+
+			header.PRG_PAGE_SIZE = 8;	// 128K
+			header.CHR_PAGE_SIZE = 0;
+			header.control1 = 0x40;
+			header.control2 = 0x10;
+
+			// load BIOS
+			if( !(lpPRG = (LPBYTE)malloc( 128*1024 )) ) {
+				// メモリを確保出来ません
+				throw	CApp::GetErrorString( IDS_ERROR_OUTOFMEMORY );
+			}
+
+			if( !(fp = ::fopen( "D:\\BBK\\ROM.BIN", "rb" )) ) {
+				// xxx ファイルを開けません
+				LPCSTR	szErrStr = CApp::GetErrorString( IDS_ERROR_OPEN );
+				::wsprintf( szErrorString, szErrStr, "ROM" );
+				throw	szErrorString;
+			}
+
+			::fread(lpPRG, 1024, 128, fp);
+			FCLOSE(fp);
+
+			// load disk image
+			if( !(lpDisk = (LPBYTE)malloc( 0x168000 )) ) {
+				// メモリを確保出来ません
+				throw	CApp::GetErrorString( IDS_ERROR_OUTOFMEMORY );
+			}
+
+			if( !(fp = ::fopen( "D:\\BBK\\000.IMG", "rb" )) ) {
+				// xxx ファイルを開けません
+				LPCSTR	szErrStr = CApp::GetErrorString( IDS_ERROR_OPEN );
+				::wsprintf( szErrorString, szErrStr, "DISK" );
+				throw	szErrorString;
+			}
+
+			::fread(lpDisk, 0x168000, 1, fp);
+			FCLOSE(fp);
+#endif
 		} else {
 			// 未対応形式です
 			throw	CApp::GetErrorString( IDS_ERROR_UNSUPPORTFORMAT );
@@ -319,7 +369,11 @@ DEBUGOUT( "PAGESIZE:%d\n", NSF_PAGE_SIZE );
 		}
 
 		// マッパ設定
+#ifdef BBKE
+		if (!bNSF && !bBBKF) {
+#else
 		if( !bNSF ) {
+#endif
 			mapper = (header.control1>>4)|(header.control2&0xF0);
 			crc = crcall = crcvrom = 0;
 
@@ -349,6 +403,12 @@ DEBUGOUT( "PAGESIZE:%d\n", NSF_PAGE_SIZE );
 				fdsmakerID = lpPRG[0x1F];
 				fdsgameID  = (lpPRG[0x20]<<24)|(lpPRG[0x21]<<16)|(lpPRG[0x22]<<8)|(lpPRG[0x23]<<0);
 			}
+#ifdef BBKE
+		} else if (bBBKF) {
+			mapper = 0x0200;	// Private mapper
+			crc = crcall = crcvrom = 0;
+			fdsmakerID = fdsgameID = 0;
+#endif
 		} else {
 		// NSF
 			mapper = 0x0100;	// Private mapper
@@ -437,6 +497,11 @@ NESHEADER	header;
 	} else if( header.ID[0] == 'N' && header.ID[1] == 'E'
 		&& header.ID[2] == 'S' && header.ID[3] == 'M') {
 		return	0;
+#ifdef BBKE
+	} else if( header.ID[0] == 'B' && header.ID[1] == 'B'
+		&& header.ID[2] == 'K' && header.ID[3] == 'E') {
+		return	0;
+#endif
 	} else {
 		LPBYTE	temp = NULL;
 		LONG	size;
@@ -482,4 +547,3 @@ void	ROM::FilenameCheck( const char* fname )
 		p = _mbsinc(p);
 	}
 }
-

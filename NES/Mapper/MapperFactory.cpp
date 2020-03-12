@@ -184,6 +184,10 @@
 #include "Mapper165.h"
 #include "Mapper167.h"
 
+#ifdef BBKE
+#include "MapperBBK.h"
+#endif
+
 //////////////////////////////////////////////////////////////////////////
 
 #include "Mapper000.cpp"
@@ -342,6 +346,10 @@
 #include "Mapper164.cpp"
 #include "Mapper165.cpp"
 #include "Mapper167.cpp"
+
+#ifdef BBKE
+#include "MapperBBK.cpp"
+#endif
 
 //////////////////////////////////////////////////////////////////////////
 // Mapper Factory
@@ -653,6 +661,11 @@ Mapper*	CreateMapper( NES* parent, INT no )
 			return new Mapper165(parent);
 		case	167:
 			return new Mapper167(parent);
+
+#ifdef BBKE
+		case	0x200:
+			return new MapperBBK(parent);
+#endif
 
 		default:
 			break;

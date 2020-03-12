@@ -16,12 +16,12 @@
 // CPU メモリバンク
 LPBYTE	CPU_MEM_BANK[8];	// 8K単位
 BYTE	CPU_MEM_TYPE[8];
-INT	CPU_MEM_PAGE[8];	// ステートセーブ用
+INT		CPU_MEM_PAGE[8];	// ステートセーブ用 (state save)
 
 // PPU メモリバンク
 LPBYTE	PPU_MEM_BANK[12];	// 1K単位
 BYTE	PPU_MEM_TYPE[12];
-INT	PPU_MEM_PAGE[12];	// ステートセーブ用
+INT		PPU_MEM_PAGE[12];	// ステートセーブ用
 BYTE	CRAM_USED[16];		// ステートセーブ用
 
 // NESメモリ
@@ -32,7 +32,11 @@ BYTE	XRAM[  8*1024];		// ダミーバンク
 BYTE	ERAM[ 32*1024];		// 拡張機器用RAM
 
 BYTE	CRAM[ 32*1024];		// キャラクタパターンRAM
+#ifdef BBKE
+BYTE	VRAM[512*1024];		// ネームテーブル/アトリビュートRAM
+#else
 BYTE	VRAM[  4*1024];		// ネームテーブル/アトリビュートRAM
+#endif
 
 BYTE	SPRAM[0x100];		// スプライトRAM
 BYTE	BGPAL[0x10];		// BGパレット
@@ -105,7 +109,7 @@ INT	i;
 	SetPROM_Bank( 0, RAM,  BANKTYPE_RAM );
 	SetPROM_Bank( 3, WRAM, BANKTYPE_RAM );
 
-	// ダミー
+	// ダミー (dummy)
 	SetPROM_Bank( 1, XRAM, BANKTYPE_ROM );
 	SetPROM_Bank( 2, XRAM, BANKTYPE_ROM );
 

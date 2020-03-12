@@ -31,7 +31,11 @@ extern	BYTE	XRAM[  8*1024];		// ダミーバンク
 extern	BYTE	ERAM[ 32*1024];		// 拡張機器用RAM
 
 extern	BYTE	CRAM[ 32*1024];		// キャラクタパターンRAM
+#ifdef BBKE
+extern	BYTE	VRAM[512*1024];		// ネームテーブル/アトリビュートRAM
+#else
 extern	BYTE	VRAM[  4*1024];		// ネームテーブル/アトリビュートRAM
+#endif
 
 extern	BYTE	SPRAM[0x100];		// スプライトRAM
 extern	BYTE	BGPAL[0x10];		// BGパレット
@@ -93,18 +97,19 @@ extern	void	SetVRAM_Mirror( INT type );
 extern	void	SetVRAM_Mirror( INT bank0, INT bank1, INT bank2, INT bank3 );
 
 
-// メモリタイプ
+// メモリタイプ (memory type)
 // For PROM (CPU)
 #define	BANKTYPE_ROM	0x00
 #define	BANKTYPE_RAM	0xFF
 #define	BANKTYPE_DRAM	0x01
 #define	BANKTYPE_MAPPER	0x80
+
 // For VROM/VRAM/CRAM (PPU)
 #define	BANKTYPE_VROM	0x00
 #define	BANKTYPE_CRAM	0x01
 #define	BANKTYPE_VRAM	0x80
 
-// ミラータイプ
+// ミラータイプ (mirror type)
 #define	VRAM_HMIRROR	0x00	// Horizontal
 #define	VRAM_VMIRROR	0x01	// Virtical
 #define	VRAM_MIRROR4	0x02	// All screen
