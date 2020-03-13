@@ -79,7 +79,7 @@ BOOL	CMemoryView::Create( HWND hWndParent )
 			WS_EX_TOOLWINDOW,
 			VIRTUANES_WNDCLASS,
 			"MemoryView",
-			WS_OVERLAPPEDWINDOW|WS_VSCROLL,	// WindowägëÂèkè¨â¬î\
+			WS_OVERLAPPEDWINDOW|WS_VSCROLL,
 			CW_USEDEFAULT,
 			CW_USEDEFAULT,
 			CW_USEDEFAULT,
@@ -87,7 +87,7 @@ BOOL	CMemoryView::Create( HWND hWndParent )
 			hWndParent,
 			NULL,
 			CApp::GetInstance(),
-			(LPVOID)this		// This ÇñÑÇﬂçûÇﬁà◊
+			(LPVOID)this
 		);
 	if( !hWnd ) {
 		DEBUGOUT( "CreateWindow faild.\n" );

@@ -326,7 +326,7 @@ DEBUGOUT( "PAGESIZE:%d\n", NSF_PAGE_SIZE );
 				throw	CApp::GetErrorString( IDS_ERROR_OUTOFMEMORY );
 			}
 
-			if( !(fp = ::fopen( "D:\\BBK\\ROM.BIN", "rb" )) ) {
+			if( !(fp = ::fopen( "ROM.BIN", "rb" )) ) {
 				// xxx ファイルを開けません
 				LPCSTR	szErrStr = CApp::GetErrorString( IDS_ERROR_OPEN );
 				::wsprintf( szErrorString, szErrStr, "ROM" );
@@ -342,7 +342,7 @@ DEBUGOUT( "PAGESIZE:%d\n", NSF_PAGE_SIZE );
 				throw	CApp::GetErrorString( IDS_ERROR_OUTOFMEMORY );
 			}
 
-			if( !(fp = ::fopen( "D:\\BBK\\000.IMG", "rb" )) ) {
+			if( !(fp = ::fopen( "000.IMG", "rb" )) ) {
 				// xxx ファイルを開けません
 				LPCSTR	szErrStr = CApp::GetErrorString( IDS_ERROR_OPEN );
 				::wsprintf( szErrorString, szErrStr, "DISK" );

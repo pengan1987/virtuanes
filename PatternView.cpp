@@ -57,7 +57,7 @@ BOOL	CPatternView::Create( HWND hWndParent )
 			WS_EX_TOOLWINDOW,
 			VIRTUANES_WNDCLASS,
 			"PatternView BG0",
-			WS_OVERLAPPEDWINDOW,	// WindowägëÂèkè¨â¬î\
+			WS_OVERLAPPEDWINDOW,
 			CW_USEDEFAULT,
 			CW_USEDEFAULT,
 			CW_USEDEFAULT,
@@ -65,7 +65,7 @@ BOOL	CPatternView::Create( HWND hWndParent )
 			hWndParent,
 			NULL,
 			CApp::GetInstance(),
-			(LPVOID)this		// This ÇñÑÇﬂçûÇﬁà◊
+			(LPVOID)this
 		);
 	if( !hWnd ) {
 		DEBUGOUT( "CreateWindow faild.\n" );

@@ -49,7 +49,7 @@ BOOL	CPaletteView::Create( HWND hWndParent )
 			WS_EX_TOOLWINDOW,
 			VIRTUANES_WNDCLASS,
 			"PaletteView",
-			WS_OVERLAPPEDWINDOW,	// WindowägëÂèkè¨â¬î\
+			WS_OVERLAPPEDWINDOW,
 			CW_USEDEFAULT,
 			CW_USEDEFAULT,
 			CW_USEDEFAULT,
@@ -57,7 +57,7 @@ BOOL	CPaletteView::Create( HWND hWndParent )
 			hWndParent,
 			NULL,
 			CApp::GetInstance(),
-			(LPVOID)this		// This ÇñÑÇﬂçûÇﬁà◊
+			(LPVOID)this
 		);
 	if( !hWnd ) {
 		DEBUGOUT( "CreateWindow faild.\n" );

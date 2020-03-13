@@ -49,7 +49,7 @@ BOOL	CNameTableView::Create( HWND hWndParent )
 			WS_EX_TOOLWINDOW,
 			VIRTUANES_WNDCLASS,
 			"NameTableView",
-			WS_OVERLAPPEDWINDOW,	// WindowägëÂèkè¨â¬î\
+			WS_OVERLAPPEDWINDOW,
 			CW_USEDEFAULT,
 			CW_USEDEFAULT,
 			CW_USEDEFAULT,
@@ -58,7 +58,7 @@ BOOL	CNameTableView::Create( HWND hWndParent )
 			HWND_DESKTOP,
 			NULL,
 			CApp::GetInstance(),
-			(LPVOID)this		// This ÇñÑÇﬂçûÇﬁà◊
+			(LPVOID)this
 		);
 	if( !hWnd ) {
 		DEBUGOUT( "CreateWindow faild.\n" );

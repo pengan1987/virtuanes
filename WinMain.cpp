@@ -42,9 +42,9 @@ INT WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 	// 簡易ウィルスチェック
 	if( SimpleVirusChecker() > 0 ) {
 		if( ::GetUserDefaultLCID() == 0x0411 ) {
-			if( ::MessageBox( NULL, "このPCはウィルスプログラムに感染している可能性があります。\n"
-						"危険ですのでなるべく早急にウィルスチェックを行って下さい。\n\n"
-						"それでも実行しますか？", "VirtuaNES 簡易ウィルスチェッカー", MB_ICONWARNING|MB_YESNO|MB_DEFBUTTON2 ) == IDNO )
+			if( ::MessageBox( NULL, "This PC may be infected with a virus program!!!\n"
+						"Should become danger, and please do a check to it immediately!!!\n\n"
+						"Do execute even it?", "VirtuaNES simple virus checker", MB_ICONWARNING|MB_YESNO|MB_DEFBUTTON2 ) == IDNO )
 				return	-1L;
 		} else {
 			if( ::MessageBox( NULL, "This PC may be infected with a virus program!!!\n"
