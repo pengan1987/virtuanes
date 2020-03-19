@@ -8,6 +8,8 @@ This model with a build in keyboard, IBM compatible 3.5 inch 1.44MB floppy drive
 
 A Chinese developer fanoble did this work around 2016, but never released outside Chinese community. I made this repository for someone want port the BBK support to other actively developing emulators, e.g. MAME or FCEUX.
 
+The original repository(SVN): https://code.google.com/archive/p/emulator-bbk/
+
 ## How to build it?
 
 I have successfully built this code with:
